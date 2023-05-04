@@ -1,0 +1,17 @@
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\bin\Debug\net6.0\MISA.Testamis.BL.deps.json
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\bin\Debug\net6.0\MISA.Testamis.BL.dll
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\bin\Debug\net6.0\MISA.Testamis.BL.pdb
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\bin\Debug\net6.0\MISA.Testamis.Common.dll
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\bin\Debug\net6.0\MISA.Testamis.DL.dll
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\bin\Debug\net6.0\MISA.Testamis.Common.pdb
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\bin\Debug\net6.0\MISA.Testamis.DL.pdb
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\obj\Debug\net6.0\MISA.Testamis.BL.csproj.AssemblyReference.cache
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\obj\Debug\net6.0\MISA.Testamis.BL.GeneratedMSBuildEditorConfig.editorconfig
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\obj\Debug\net6.0\MISA.Testamis.BL.AssemblyInfoInputs.cache
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\obj\Debug\net6.0\MISA.Testamis.BL.AssemblyInfo.cs
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\obj\Debug\net6.0\MISA.Testamis.BL.csproj.CoreCompileInputs.cache
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\obj\Debug\net6.0\MISA.Testamis.BL.csproj.CopyComplete
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\obj\Debug\net6.0\MISA.Testamis.BL.dll
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\obj\Debug\net6.0\refint\MISA.Testamis.BL.dll
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\obj\Debug\net6.0\MISA.Testamis.BL.pdb
+C:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.BL\obj\Debug\net6.0\ref\MISA.Testamis.BL.dll
