@@ -15,6 +15,11 @@ namespace MISA.Testamis.Common.Entitis
         public string DepartmentName { get; set; }
 
         /// <summary>
+        /// Mã định dạng đơn vị
+        /// </summary>
+        public string MisaCode { get; set; }
+
+        /// <summary>
         /// Mô tả
         /// </summary>
         public string? Description { get; set; }

@@ -39,6 +39,11 @@ namespace MISA.Testamis.Common.Entitis
         public string? PositionName { get; set; }
 
         /// <summary>
+        /// ID Đơn vị
+        /// </summary>
+        public Guid? DepartmentId { get; set; }
+
+        /// <summary>
         /// Đơn vị
         /// </summary>
         public string? DepartmentName { get; set; }

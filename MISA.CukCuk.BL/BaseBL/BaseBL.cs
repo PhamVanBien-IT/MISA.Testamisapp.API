@@ -15,6 +15,7 @@ using MISA.Testamis.Common;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
 using MISA.Testamis.Common.Entitis;
+using MISA.Testamis.Common.Enums;
 
 namespace MISA.Testamis.BL
 {
@@ -108,6 +109,32 @@ namespace MISA.Testamis.BL
         }
 
         /// <summary>
+        /// API Lấy tất cả danh sách đối tượng
+        /// </summary>
+        /// <returns>Danh sách đối tượng</returns>
+        /// CreatedBy: Bien (27/04/2023)
+        public ServiceResult GetAll()
+        {
+            var serviceResult = new ServiceResult();
+
+            var data = _baseDL.GetAll();
+
+            if (data != null)
+            {
+                serviceResult.Data = data;
+                serviceResult.IsSuccess = true;
+                serviceResult.ErrorCode = ErrorCode.NoError;
+            }
+            else
+            {
+                serviceResult.IsSuccess = false;
+                serviceResult.ErrorCode = ErrorCode.UnknownError;
+            }
+
+            return serviceResult;
+        }
+
+        /// <summary>
         /// API tìm kiếm theo tên và mã
         /// </summary>
         /// <param name="filter">Tên và mã đối tượng cần tìm kiếm</param>
@@ -120,11 +147,13 @@ namespace MISA.Testamis.BL
         public PagingResult Filter(
             [FromQuery] int offset = 1,
             [FromQuery] int limit = 20,
-             [FromQuery] string? filter = null
+             [FromQuery] string? filter = null,
+             int? statusFilter = 0,
+             string? misaCode = null
             )
         {
             // Gọi vào hàm tìm kiếm trong BaseDL
-            var data = _baseDL.Filter(offset, limit, filter);
+            var data = _baseDL.Filter(offset, limit, filter, statusFilter, misaCode);
 
             if (data != null)
             {

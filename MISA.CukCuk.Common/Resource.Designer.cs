@@ -61,15 +61,6 @@ namespace MISA.Testamis.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string a {
-            get {
-                return ResourceManager.GetString("a", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Có lỗi vui lòng đợi .
         /// </summary>
         public static string ErrorMsg {
@@ -111,6 +102,15 @@ namespace MISA.Testamis.Common {
         public static string ErrorMsg_Filter {
             get {
                 return ResourceManager.GetString("ErrorMsg_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lỗi lấy tất cả danh sách.
+        /// </summary>
+        public static string ErrorMsg_GetAll {
+            get {
+                return ResourceManager.GetString("ErrorMsg_GetAll", resourceCulture);
             }
         }
         

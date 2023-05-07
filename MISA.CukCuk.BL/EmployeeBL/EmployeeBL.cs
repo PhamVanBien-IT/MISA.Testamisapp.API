@@ -54,7 +54,6 @@ namespace MISA.Testamis.BL
                 serviceResult.Data = data;
                 serviceResult.IsSuccess = true;
                 serviceResult.ErrorCode = ErrorCode.NoError;
-                serviceResult.Data = data;
             }
             else
             {

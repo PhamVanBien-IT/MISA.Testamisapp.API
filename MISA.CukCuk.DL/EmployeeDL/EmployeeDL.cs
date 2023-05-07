@@ -72,7 +72,9 @@ namespace MISA.Testamis.DL
         public override PagingResult Filter(
            [FromQuery] int offset = 1,
            [FromQuery] int limit = 20,
-           [FromQuery] string? filter = null
+           [FromQuery] string? filter = null,
+            int? statusFilter = 0,
+            string? misaCode = null
            )
         {
             // Khai tên class truyền vào
@@ -88,6 +90,7 @@ namespace MISA.Testamis.DL
             parameters.Add($"p_{employeeName}Filter", filter);
             parameters.Add("p_LiMit", limit);
             parameters.Add("p_OffSet", offset);
+            parameters.Add("p_MisaCodeFilter", misaCode);
 
             // Gọi vào DB
             using (var connection = _database.CreateConnection())

@@ -17,6 +17,12 @@ namespace MISA.Testamis.BL
     public interface IBaseBL<T>
     {
         /// <summary>
+        /// API Lấy tất cả danh sách đối tượng
+        /// </summary>
+        /// <returns>Danh sách đối tượng</returns>
+        /// CreatedBy: Bien (27/04/2023)
+        public ServiceResult GetAll();
+        /// <summary>
         /// API tìm kiếm theo tên và mã
         /// </summary>
         /// <param name="filter">Tên và mã đối tượng cần tìm kiếm</param>
@@ -27,7 +33,9 @@ namespace MISA.Testamis.BL
         public PagingResult Filter(
            [FromQuery] int offset = 1,
             [FromQuery] int limit = 20,
-             [FromQuery] string? filter = null
+             [FromQuery] string? filter = null,
+             int? statusFilter = 0,
+             string? misaCode = null
            );
 
         /// <summary>

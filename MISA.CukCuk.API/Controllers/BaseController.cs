@@ -31,7 +31,47 @@ namespace MISA.Testamis.API.Controllers
         #endregion
 
         #region Method
+        /// <summary>
+        /// API Lấy tất cả danh sách đối tượng
+        /// </summary>
+        /// <returns>Danh sách đối tượng</returns>
+        /// CreatedBy: Bien (27/04/2023)
+        [HttpGet]
+        public IActionResult GetAll()
+        {
 
+            try
+            {
+                var data = _baseBL.GetAll();
+
+                if (data != null)
+                {
+                    return Ok(data);
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult
+                    {
+                        ErrorCode = ErrorCode.UnknownError,
+                        MsgDev = Common.Resource.ErrorMsg_GetAll,
+                        TraceId = GetHttpContext().TraceIdentifier
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = ErrorCode.UnknownError,
+                    MsgDev = ex.Message,
+                    MsgUser = Common.Resource.ErrorMsg,
+                    TraceId = GetHttpContext().TraceIdentifier
+                });
+            }
+
+
+        }
         /// <summary>
         /// API tìm theo tên và mã rồi phân trang
         /// </summary>
@@ -45,13 +85,15 @@ namespace MISA.Testamis.API.Controllers
         public virtual IActionResult Filter(
             [FromQuery] int offset = 1,
             [FromQuery] int limit = 20,
-             [FromQuery] string? filter = null
+             [FromQuery] string? filter = null,
+             int? statusFilter = 0,
+             string? misaCode = null
             )
         {
             try
             {
                 // Gọi hàm tìm kiếm trong BaseBL
-                var data = _baseBL.Filter(offset, limit, filter);
+                var data = _baseBL.Filter(offset, limit, filter, statusFilter, misaCode);
                 return Ok(data);
             }
             catch (Exception ex)

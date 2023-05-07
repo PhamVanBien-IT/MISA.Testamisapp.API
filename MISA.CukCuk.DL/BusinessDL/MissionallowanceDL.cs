@@ -30,7 +30,9 @@ namespace MISA.Testamis.DL
         public override PagingResult Filter(
            [FromQuery] int offset = 1,
            [FromQuery] int limit = 20,
-           [FromQuery] string? filter = null
+           [FromQuery] string? filter = null,
+           int? statusFilter = 0,
+           string? misaCode = null
            )
         {
             var dataStore = DataStore.Instance;
@@ -48,6 +50,10 @@ namespace MISA.Testamis.DL
             parameters.Add($"p_MissionallowanceFilter", filter);
             parameters.Add("p_LiMit", limit);
             parameters.Add("p_OffSet", offset);
+            parameters.Add("p_StatusFilter", statusFilter);
+            parameters.Add("p_MisaCodeFilter", misaCode);
+
+
 
             // Gọi vào DB
             using (var connection = _database.CreateConnection())
@@ -116,7 +122,7 @@ namespace MISA.Testamis.DL
         private Guid GetMissionallowanceId()
         {
             // Chuẩn bị tên stored procecure
-            string storedProdureName = "p_Missionallowance_GetId";
+            string storedProdureName = "Proc_Missionallowance_GetId";
 
             // Gọi vào DB
             using (var connection = _database.CreateConnection())
@@ -163,6 +169,93 @@ namespace MISA.Testamis.DL
 
             return numberOfAffectedRows;
 
+        }
+        /// <summary>
+        /// API sửa đơn công tác
+        /// </summary>
+        /// <param name="missionallowanceId">Id của đơn công tác muốn sửa</param>
+        /// <param name="missionallowance">Đơn công tác mang giá trị đã được thay đổi</param>
+        /// <returns> 
+        /// 1. Sửa thành công, 
+        /// 0. Sửa thất bại
+        /// </returns>
+        /// CreatedBy: Bien (17/1/2023)
+        public override int Update([FromRoute] Guid missionallowanceId, [FromBody] Missionallowance missionallowance)
+        {
+            // Khai tên class truyền vào
+            var entityName = typeof(Missionallowance).Name;
+
+            // Lấy toàn bộ property của T
+            var properties = typeof(Missionallowance).GetProperties();
+
+            // Chuẩn bị tên stored procedure
+            string storedProdureName = string.Format(ProcedureName.PROC_UPDATE, entityName);
+
+            //Chuẩn bị thàm số đầu vào cho stored
+            var parameters = new DynamicParameters();
+
+            foreach (var property in properties)
+            {
+                parameters.Add($"p_{property.Name}", property.GetValue(missionallowance));
+            }
+            parameters.Add($"p_{entityName}Id", missionallowanceId);
+
+            // Gọi vào DB
+            using (var connection = _database.CreateConnection())
+            {
+                connection.Open();
+
+                int numberDeleteEmployeeMissionallowance = DeleteEmployeeMissionallowance(missionallowanceId);
+
+                var numberInsertEmployeeMissionallowance = InsertEmployeeMissionallowance(missionallowance.EmployeeMissionallowances, missionallowanceId);
+
+                var numberOfAffectedRows = connection.Execute(storedProdureName, parameters, commandType: CommandType.StoredProcedure);
+               
+                // Xử lý kết quả trả về
+                if (numberOfAffectedRows > 0)
+                {
+                    return numberOfAffectedRows;
+                }
+                else
+                {
+                    return numberOfAffectedRows;
+                }
+            }
+        }
+        /// <summary>
+        /// Hàm xóa danh sách nhân viên đi công tác
+        /// </summary>
+        /// <param name="missionallowanceId">Id đơn công tác</param>
+        /// <returns>
+        /// > 0: Nếu xóa thành công
+        /// 0: Nếu xóa thất bại
+        /// </returns>
+        /// CreatedBy: Bien (05/05/2023)
+        private int DeleteEmployeeMissionallowance(Guid missionallowanceId)
+        {
+            int numberOfAffectedRows = 0;
+
+            // Khai tên class truyền vào
+            var entityName = typeof(EmployeeMissionallowance).Name;
+
+            // Chuẩn bị tên stored procedure
+            string storedProdureName = String.Format(ProcedureName.PROC_DELETE, entityName);
+
+            // Chuẩn bị tham số đầu vào cho stored
+
+            var parameters = new DynamicParameters();
+            parameters.Add($"p_EmployeeMissionallowanceId", missionallowanceId);
+
+            // Gọi vào DB
+            using (var connection = _database.CreateConnection())
+            {
+                connection.Open();
+
+                numberOfAffectedRows = connection.Execute(storedProdureName, parameters, commandType: CommandType.StoredProcedure);
+
+            }
+
+            return numberOfAffectedRows;
         }
     }
 }

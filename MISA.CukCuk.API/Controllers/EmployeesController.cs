@@ -42,47 +42,7 @@ namespace MISA.Testamis.Common.Controllers
         #endregion
 
         #region Method
-        /// <summary>
-        /// API Lấy tất cả danh sách nhân viên
-        /// </summary>
-        /// <returns>Danh sách nhân viên</returns>
-        /// CreatedBy: Bien (27/04/2023)
-        [HttpGet]
-        public IActionResult GetEmployees()
-        {
-
-            try
-            {
-                var data = _employeeBL.GetEmployees();
-
-                if (data != null)
-                {
-                    return Ok(data);
-                }
-                else
-                {
-                    return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult
-                    {
-                        ErrorCode = ErrorCode.UnknownError,
-                        MsgDev = Resource.ErrorMsgDev_Filter,
-                        TraceId = GetHttpContext().TraceIdentifier
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-
-                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
-                {
-                    ErrorCode = ErrorCode.UnknownError,
-                    MsgDev = ex.Message,
-                    MsgUser = Resource.ErrorMsg,
-                    TraceId = GetHttpContext().TraceIdentifier
-                });
-            }
-
-            
-        }
+       
         /// <summary>
         /// API sinh mới mã nhân viên
         /// </summary>

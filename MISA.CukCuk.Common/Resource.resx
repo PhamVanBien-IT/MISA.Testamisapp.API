@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="a" xml:space="preserve">
-    <value />
-  </data>
   <data name="ErrorMsg" xml:space="preserve">
     <value>Có lỗi vui lòng đợi </value>
   </data>
@@ -158,6 +155,9 @@
   </data>
   <data name="ErrorMsg_Filter" xml:space="preserve">
     <value>ID không tồn tại</value>
+  </data>
+  <data name="ErrorMsg_GetAll" xml:space="preserve">
+    <value>Lỗi lấy tất cả danh sách</value>
   </data>
   <data name="ErrorMsg_GetByIdByDL" xml:space="preserve">
     <value>Lỗi lấy đối tượng theo id khi gọi vào DL</value>

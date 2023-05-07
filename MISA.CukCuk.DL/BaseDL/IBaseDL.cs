@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MISA.Testamis.API.Enums.DTO;
+using MISA.Testamis.Common.Entitis;
 using MISA.Testamis.Common.Enums.DTO;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,13 @@ namespace MISA.Testamis.DL
     public interface IBaseDL<T>
     {
         /// <summary>
+        /// API Lấy tất cả danh sách đối tượng
+        /// </summary>
+        /// <returns>Danh sách đối tượng</returns>
+        /// CreatedBy: Bien (27/04/2023)
+        public List<T> GetAll();
+
+        /// <summary>
         /// API tìm kiếm theo tên và mã
         /// </summary>
         /// <param name="filter">Tên và mã đối tượng cần tìm kiếm</param>
@@ -21,7 +29,9 @@ namespace MISA.Testamis.DL
         /// CreatedBy: Bien (17/1/2023)
         public PagingResult Filter([FromQuery] int offset = 1,
             [FromQuery] int limit = 20,
-             [FromQuery] string? filter = null
+             [FromQuery] string? filter = null,
+              int? statusFilter = 0,
+              string? misaCode = null
             );
 
         /// <summary>

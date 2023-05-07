@@ -19,7 +19,7 @@ namespace MISA.Testamis.Common.Entitis
         /// <summary>
         /// Id nhân viên
         /// </summary>
-        public string? EmployeeId { get; set; }
+        public Guid? EmployeeId { get; set; }
 
         /// <summary>
         /// Id đơn công tác

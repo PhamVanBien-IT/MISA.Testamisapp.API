@@ -40,6 +40,32 @@ namespace MISA.Testamis.DL
         #endregion
 
         #region Method
+        /// <summary>
+        /// API Lấy tất cả danh sách đối tượng
+        /// </summary>
+        /// <returns>Danh sách đối tượng</returns>
+        /// CreatedBy: Bien (27/04/2023)
+        public List<T> GetAll()
+        {
+            var dataStore = DataStore.Instance;
+
+            // Khai tên class truyền vào
+            var entityName = typeof(T).Name;
+
+            // Chuẩn bị tên stored procedure
+            string storedProdureName = string.Format(ProcedureName.PROC_GET_ALL, entityName);
+
+            // Gọi vào DB
+            using (var connection = _database.CreateConnection())
+            {
+                connection.Open();
+
+                var multi = connection.QueryMultiple(storedProdureName, commandType: CommandType.StoredProcedure);
+                var dataList = multi.Read<T>().ToList();
+
+                return dataList;
+            }
+        }
 
         /// <summary>
         /// API tìm kiếm theo tên và mã
@@ -52,7 +78,9 @@ namespace MISA.Testamis.DL
         public virtual PagingResult Filter(
             [FromQuery] int offset = 1,
             [FromQuery] int limit = 20,
-            [FromQuery] string? filter = null
+            [FromQuery] string? filter = null,
+            int? statusFilter = 0,
+            string? misaCode = null
             )
         {
             // Khai tên class truyền vào
@@ -68,6 +96,8 @@ namespace MISA.Testamis.DL
             parameters.Add($"p_{entityName}Filter", filter);
             parameters.Add("p_LiMit", limit);
             parameters.Add("p_OffSet", offset);
+            parameters.Add("p_StatusFilter", statusFilter);
+            parameters.Add("p_MisaCodeFilter", misaCode);
 
             // Gọi vào DB
             using (var connection = _database.CreateConnection())
@@ -185,7 +215,7 @@ namespace MISA.Testamis.DL
         /// 0. Sửa thất bại
         /// </returns>
         /// CreatedBy: Bien (17/1/2023)
-        public int Update([FromRoute] Guid entityId, [FromBody] T entity)
+        public virtual int Update([FromRoute] Guid entityId, [FromBody] T entity)
         {
             // Khai tên class truyền vào
             var entityName = typeof(T).Name;

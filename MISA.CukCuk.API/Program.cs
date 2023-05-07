@@ -29,6 +29,7 @@ builder.Services.AddScoped<IDatabase, Database>();
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.PropertyNamingPolicy = null;
+    options.JsonSerializerOptions.Converters.Add(new DateTimeHandler());
 }
         ); 
 builder.Services.AddCors(p => p.AddPolicy("MyCors", build =>
