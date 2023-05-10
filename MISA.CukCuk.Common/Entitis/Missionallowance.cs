@@ -66,7 +66,7 @@ namespace MISA.Testamis.Common.Entitis
         /// <summary>
         /// Số ngày đi công tác
         /// </summary>
-        public string? LeaveDay { get; set; }
+        public int? LeaveDay { get; set; }
 
         /// <summary>
         /// Địa chỉ 

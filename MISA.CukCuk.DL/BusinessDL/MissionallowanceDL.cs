@@ -4,6 +4,7 @@ using MISA.Testamis.API.Enums.DTO;
 using MISA.Testamis.Common.Constants;
 using MISA.Testamis.Common.Database;
 using MISA.Testamis.Common.Entitis;
+using MISA.Testamis.Common.Enums.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -170,6 +171,7 @@ namespace MISA.Testamis.DL
             return numberOfAffectedRows;
 
         }
+
         /// <summary>
         /// API sửa đơn công tác
         /// </summary>
@@ -222,6 +224,7 @@ namespace MISA.Testamis.DL
                 }
             }
         }
+
         /// <summary>
         /// Hàm xóa danh sách nhân viên đi công tác
         /// </summary>
@@ -257,5 +260,102 @@ namespace MISA.Testamis.DL
 
             return numberOfAffectedRows;
         }
+
+        /// <summary>
+        /// API Cập nhật trạng thái đơn công tác
+        /// </summary>
+        /// <param name="missionallowanceIds">Danh sách đơn muốn cập nhật</param>
+        /// <param name="status">Gía trị trạng thái muốn cập nhập</param>
+        /// <returns>
+        /// >0 : Cập nhật thành cồn
+        /// 0: Cập nhật thát bại
+        /// </returns>
+        /// CreatedBy: Bien (10/05/2023)
+        public int UpdateMissionallowanceStatus(List<Guid> missionallowanceIds, int status)
+        {
+            var numberOfAffectedRows = 0;
+
+            // Khai tên class truyền vào
+            var entityName = typeof(Missionallowance).Name;
+
+            var sizeList = missionallowanceIds.Count();
+            // Khai báo tên stored procedure z
+            string storedProcedureName = String.Format(Common.Constants.ProcedureName.PROC_UPDATE_STATUS, entityName);
+
+            var entityIdList = "";
+            // Chuẩn bị tham số đầu vào cho procedure
+            var parameters = new DynamicParameters();
+            entityIdList = $"{String.Join(",", missionallowanceIds)}";
+
+            parameters.Add($"p_MisionallowanceIds", entityIdList);
+            parameters.Add($"p_Status", status);
+            using (var connection = _database.CreateConnection())
+            {
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        numberOfAffectedRows = connection.Execute(storedProcedureName, parameters, transaction, commandType: CommandType.StoredProcedure);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        transaction.Rollback();
+                    }
+                }
+            }
+            // Xử lý kết quả trả về
+            if (numberOfAffectedRows > 0)
+            {
+                return numberOfAffectedRows;
+            }
+            else
+            {
+                return numberOfAffectedRows;
+            }
+        }
+
+        /// <summary>
+        /// API xuất khẩu danh sách đơn đã chọn
+        /// </summary>
+        /// <param name="missionallowanceIds">Danh sách id đơn đã chọn</param>
+        /// <returns>Danh sách đơn</returns>
+        /// CreatedBy: Bien (10/05/2023)
+        public ServiceResult ExportMissionnallowanceList(List<Guid> missionallowanceIds)
+        {
+            // Khai tên class truyền vào
+            var entityName = typeof(Missionallowance).Name;
+
+            var sizeList = missionallowanceIds.Count();
+            // Khai báo tên stored procedure z
+            string storedProcedureName = "Proc_Missionallowance_ExportListSelected";
+
+            var entityIdList = "";
+            // Chuẩn bị tham số đầu vào cho procedure
+            var parameters = new DynamicParameters();
+            entityIdList = $"{String.Join(",", missionallowanceIds)}";
+
+            parameters.Add($"p_MisionallowanceIds", entityIdList);
+            using (var connection = _database.CreateConnection())
+            {
+                // Thực hiện lệnh gọi vào DB
+                var multi = connection.QueryMultiple(storedProcedureName, parameters, commandType: CommandType.StoredProcedure);
+
+                // Xử lý dữ liệu trả về
+                var records = multi.Read<Missionallowance>().ToList();
+                var totalCount = multi.Read<int>().Single();
+
+                // Xử lý kết quả trả về
+                return new ServiceResult
+                {
+                    IsSuccess = true,
+                    ErrorCode = Common.Enums.ErrorCode.NoError,
+                    Data = records,
+                };
+            }
+    }
     }
 }

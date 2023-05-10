@@ -48,5 +48,10 @@ namespace MISA.Testamis.Common.Constants
         /// </summary>
         public static string PROC_GET_ALL = "Proc_{0}_GetAll";
 
+        /// <summary>
+        /// Template cho procdure cập nhật trạng thái đơn công tác
+        /// </summary>
+        public static string PROC_UPDATE_STATUS = "Proc_{0}_UpdateStatus";
+
     }
 }

@@ -63,7 +63,7 @@ namespace MISA.Testamis.BL
         /// IsSuccess = false. Nếu thêm thất bại
         /// </returns>
         /// CretaedBy: Bien (6/2/2023)
-        public ServiceResult Insert(T entity);
+        public  ServiceResult Insert(T entity);
 
         /// <summary>
         /// API sửa
