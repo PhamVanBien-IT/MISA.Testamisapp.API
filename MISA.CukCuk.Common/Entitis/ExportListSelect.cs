@@ -11,7 +11,7 @@ namespace MISA.Testamis.Common.Entitis
         /// <summary>
         /// Danh sách đối tượng đã chọn
         /// </summary>
-       public List<Guid> missionallowanceIds { get; set; }
+       public List<Guid> ids { get; set; }
 
         /// <summary>
         /// Danh sách cột hiển thị

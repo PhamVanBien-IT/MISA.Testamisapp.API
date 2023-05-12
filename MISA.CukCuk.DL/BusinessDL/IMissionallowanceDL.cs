@@ -28,7 +28,7 @@ namespace MISA.Testamis.DL
         /// <param name="missionallowanceIds">Danh sách id đơn đã chọn</param>
         /// <returns>Danh sách đơn</returns>
         /// CreatedBy: Bien (10/05/2023)
-        public ServiceResult ExportMissionnallowanceList(List<object> missionallowanceIds);
+        public ServiceResult ExportMissionnallowanceList(ExportListSelect dataSelected);
 
         /// <summary>
         /// API lấy danh sách bản ghi đã tạo ngày hôm nay

@@ -349,7 +349,7 @@ namespace MISA.Testamis.DL
         /// <param name="missionallowanceIds">Danh sách id đơn đã chọn</param>
         /// <returns>Danh sách đơn</returns>
         /// CreatedBy: Bien (10/05/2023)
-        public ServiceResult ExportMissionnallowanceList(List<object> missionallowanceIds)
+        public ServiceResult ExportMissionnallowanceList(ExportListSelect dataSelected)
         {
             // Khai tên class truyền vào
             var entityName = typeof(Missionallowance).Name;
@@ -361,7 +361,7 @@ namespace MISA.Testamis.DL
             var entityIdList = "";
             // Chuẩn bị tham số đầu vào cho procedure
             var parameters = new DynamicParameters();
-            entityIdList = $"{String.Join(",", missionallowanceIds)}";
+            entityIdList = $"{String.Join(",", dataSelected.ids)}";
 
             parameters.Add($"p_MisionallowanceIds", entityIdList);
             using (var connection = _database.CreateConnection())

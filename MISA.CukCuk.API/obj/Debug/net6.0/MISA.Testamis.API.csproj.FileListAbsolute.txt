@@ -119,3 +119,4 @@ D:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.API\obj\Debug\net6.0\refint\MISA.T
 D:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.API\obj\Debug\net6.0\MISA.Testamis.API.pdb
 D:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.API\obj\Debug\net6.0\MISA.Testamis.API.genruntimeconfig.cache
 D:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.API\obj\Debug\net6.0\ref\MISA.Testamis.API.dll
+D:\MISA\GĐ2\MISA.Testamisapp.API\MISA.CukCuk.API\obj\Debug\net6.0\MISA.Testamis.API.MvcApplicationPartsAssemblyInfo.cs

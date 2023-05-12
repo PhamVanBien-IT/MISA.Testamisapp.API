@@ -110,11 +110,11 @@ namespace MISA.Testamis.API.Controllers
         /// <returns>File Excel chứa dữ liệu</returns>
         /// CreatedBy: Bien (10/05/2023)
         [HttpPost("ExportExcelSelected")]
-        public IActionResult ExportMissionnallowanceList(List<object> missionallowanceIds)
+        public IActionResult ExportMissionnallowanceList(ExportListSelect dataSelected)
         {
             try
             {
-                var data = _missionallowanceBL.ExportMissionnallowanceList(missionallowanceIds);
+                var data = _missionallowanceBL.ExportMissionnallowanceList(dataSelected);
 
                 if (data != null)
                 {
