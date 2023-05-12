@@ -29,5 +29,14 @@ namespace MISA.Testamis.BL
         /// <returns>File Excel chứa dữ liệu</returns>
         /// CreatedBy: Bien (10/05/2023)
         public MemoryStream ExportMissionnallowanceList(List<Guid> missionallowanceIds);
+
+        /// <summary>
+        /// API lấy danh sách bản ghi đã tạo ngày hôm nay
+        /// </summary>
+        /// <returns>
+        /// Danh sách đơn công tác đã tạo hôm nay
+        /// </returns>
+        /// CreatedBy: Bien (12/05/2023
+        public ServiceResult GetAddMissionallowanceToDay();
     }
 }

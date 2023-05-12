@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MISA.Testamis.Common.Enums;
 
 namespace MISA.Testamis.BL
 {
@@ -113,6 +114,7 @@ namespace MISA.Testamis.BL
                         r.Style.Border.Right.Style = ExcelBorderStyle.Thin;
                         r.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
                     }
+
                     worksheet.Cells["A3"].Value = "STT";
                     worksheet.Cells["B3"].Value = "Mã nhân viên";
                     worksheet.Cells["C3"].Value = "Người đề nghị";
@@ -294,6 +296,7 @@ namespace MISA.Testamis.BL
                         r.Style.Border.Right.Style = ExcelBorderStyle.Thin;
                         r.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
                     }
+
                     worksheet.Cells["A3"].Value = "STT";
                     worksheet.Cells["B3"].Value = "Mã nhân viên";
                     worksheet.Cells["C3"].Value = "Người đề nghị";
@@ -381,6 +384,34 @@ namespace MISA.Testamis.BL
                 return stream;
             }
             return new MemoryStream();
+        }
+
+        /// <summary>
+        /// API lấy danh sách bản ghi đã tạo ngày hôm nay
+        /// </summary>
+        /// <returns>
+        /// Danh sách đơn công tác đã tạo hôm nay
+        /// </returns>
+        /// CreatedBy: Bien (12/05/2023
+        public ServiceResult GetAddMissionallowanceToDay()
+        {
+            var serviceResult = new ServiceResult();
+
+            var data = _missionallowanceDL.GetAddMissionallowanceToDay();
+
+            if (data != null)
+            {
+                serviceResult.Data = data;
+                serviceResult.IsSuccess = true;
+                serviceResult.ErrorCode = ErrorCode.NoError;
+            }
+            else
+            {
+                serviceResult.IsSuccess = false;
+                serviceResult.ErrorCode = ErrorCode.UnknownError;
+            }
+
+            return serviceResult;
         }
         #endregion
     }

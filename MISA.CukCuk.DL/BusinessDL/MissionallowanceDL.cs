@@ -99,15 +99,27 @@ namespace MISA.Testamis.DL
             {
                 connection.Open();
 
-               var numberOfAffectedRows = connection.Execute(storedProdureName, missionallowance, commandType: CommandType.StoredProcedure);
-
-
-                if (numberOfAffectedRows > 0)
+                using (var transaction = connection.BeginTransaction())
                 {
-                    var missionallowanceId = GetMissionallowanceId();
-                    numberInsertEmployeeMissionallowance = InsertEmployeeMissionallowance(missionallowance.EmployeeMissionallowances, missionallowanceId);
-                }
+                    try
+                    {
+                        var numberOfAffectedRows = connection.Execute(storedProdureName, missionallowance, transaction, commandType: CommandType.StoredProcedure);
 
+
+                        if (numberOfAffectedRows > 0)
+                        {
+                            var missionallowanceId = GetMissionallowanceId();
+                            numberInsertEmployeeMissionallowance = InsertEmployeeMissionallowance(missionallowance.EmployeeMissionallowances, missionallowanceId);
+                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        transaction.Rollback();
+                    }
+                }
+               
                 return numberInsertEmployeeMissionallowance;
 
             }
@@ -183,6 +195,7 @@ namespace MISA.Testamis.DL
         /// CreatedBy: Bien (17/1/2023)
         public override int Update([FromRoute] Guid missionallowanceId, [FromBody] Missionallowance missionallowance)
         {
+            var numberOfAffectedRows = 0;
             // Khai tên class truyền vào
             var entityName = typeof(Missionallowance).Name;
 
@@ -205,12 +218,25 @@ namespace MISA.Testamis.DL
             using (var connection = _database.CreateConnection())
             {
                 connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        int numberDeleteEmployeeMissionallowance = DeleteEmployeeMissionallowance(missionallowanceId);
 
-                int numberDeleteEmployeeMissionallowance = DeleteEmployeeMissionallowance(missionallowanceId);
+                        var numberInsertEmployeeMissionallowance = InsertEmployeeMissionallowance(missionallowance.EmployeeMissionallowances, missionallowanceId);
 
-                var numberInsertEmployeeMissionallowance = InsertEmployeeMissionallowance(missionallowance.EmployeeMissionallowances, missionallowanceId);
+                        numberOfAffectedRows = connection.Execute(storedProdureName, parameters, transaction, commandType: CommandType.StoredProcedure);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        transaction.Rollback();
+                    }
+                }
 
-                var numberOfAffectedRows = connection.Execute(storedProdureName, parameters, commandType: CommandType.StoredProcedure);
+              
                
                 // Xử lý kết quả trả về
                 if (numberOfAffectedRows > 0)
@@ -356,5 +382,30 @@ namespace MISA.Testamis.DL
                 };
             }
     }
+
+        /// <summary>
+        /// API lấy danh sách bản ghi đã tạo ngày hôm nay
+        /// </summary>
+        /// <returns>
+        /// Danh sách đơn công tác đã tạo hôm nay
+        /// </returns>
+        /// CreatedBy: Bien (12/05/2023
+        public List<Guid> GetAddMissionallowanceToDay()
+        {
+
+            // Chuẩn bị tên stored procedure
+            string storedProdureName = "Proc_Missionallwance_GetNow";
+
+            // Gọi vào DB
+            using (var connection = _database.CreateConnection())
+            {
+                connection.Open();
+
+                var multi = connection.QueryMultiple(storedProdureName, commandType: CommandType.StoredProcedure);
+                var dataList = multi.Read<Guid>().ToList();
+
+                return dataList;
+            }
+        }
     }
 }

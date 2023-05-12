@@ -5749,19 +5749,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API\\MISA.Testamis.API.csproj",
+      "projectUniqueName": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API\\MISA.Testamis.API.csproj",
       "projectName": "MISA.Testamis.API",
-      "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API\\MISA.Testamis.API.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API\\obj\\",
+      "projectPath": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API\\MISA.Testamis.API.csproj",
+      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+      "outputPath": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5775,11 +5775,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.BL\\MISA.Testamis.BL.csproj": {
-              "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.BL\\MISA.Testamis.BL.csproj"
+            "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.BL\\MISA.Testamis.BL.csproj": {
+              "projectPath": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.BL\\MISA.Testamis.BL.csproj"
             },
-            "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj": {
-              "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj"
+            "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj": {
+              "projectPath": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj"
             }
           }
         }

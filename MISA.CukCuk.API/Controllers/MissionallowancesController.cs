@@ -5,6 +5,7 @@ using MISA.Testamis;
 using MISA.Testamis.Common.Entitis;
 using MISA.Testamis.Common.Enums.DTO;
 using Amazon.Auth.AccessControlPolicy;
+using MISA.Testamis.Common.Enums;
 
 namespace MISA.Testamis.API.Controllers
 {
@@ -143,6 +144,49 @@ namespace MISA.Testamis.API.Controllers
                 });
             }
         }
-        #endregion
+
+
+        /// <summary>
+        /// API lấy danh sách bản ghi đã tạo ngày hôm nay
+        /// </summary>
+        /// <returns>
+        /// Danh sách đơn công tác đã tạo hôm nay
+        /// </returns>
+        /// CreatedBy: Bien (12/05/2023
+        [HttpGet("MissionallowanceToDay")]
+        public IActionResult GetAddMissionallowanceToDay() {
+
+        try
+        {
+            var data = _missionallowanceBL.GetAddMissionallowanceToDay();
+
+            if (data != null)
+            {
+                return Ok(data);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, new ErrorResult
+                {
+                    ErrorCode = ErrorCode.UnknownError,
+                    MsgDev = Common.Resource.ErrorMsg_GetAll,
+                    TraceId = GetHttpContext().TraceIdentifier
+                });
+            }
+        }
+        catch (Exception ex)
+        {
+
+            return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+            {
+                ErrorCode = ErrorCode.UnknownError,
+                MsgDev = ex.Message,
+                MsgUser = Common.Resource.ErrorMsg,
+                TraceId = GetHttpContext().TraceIdentifier
+            });
+        }
+
     }
+    #endregion
+}
 }
