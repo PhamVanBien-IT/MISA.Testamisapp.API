@@ -36,12 +36,12 @@ namespace MISA.Testamis.API.Controllers
         /// <param name="filter">Tìm kiếm theo tên và mã</param>
         /// <returns>File dữ liệu Excel</returns>
         /// CreatedBy: Bien (05/04/2023)
-        [HttpGet("ExportExcel")]
-        public IActionResult ExportToExcel(string? filter)
+        [HttpPost("ExportExcel")]
+        public IActionResult ExportToExcel(string? filter, List<DataGrid> dataGrid)
         {
             try
             {
-                var data = _missionallowanceBL.ExportToExcel(filter);
+                var data = _missionallowanceBL.ExportToExcel(filter, dataGrid);
 
                 if (data != null)
                 {

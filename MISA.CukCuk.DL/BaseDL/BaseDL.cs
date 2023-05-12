@@ -300,7 +300,7 @@ namespace MISA.Testamis.DL
         /// </summary>
         /// <returns>File Excel chứa dữ liệu</returns>
         /// CreatedBy: Bien (05/04/2023)
-        public ServiceResult ExportToExcel(string? filter)
+        public ServiceResult ExportToExcel(string? filter, List<DataGrid> dataGrid)
         {
             // Khai tên class truyền vào
             var entityName = typeof(T).Name;

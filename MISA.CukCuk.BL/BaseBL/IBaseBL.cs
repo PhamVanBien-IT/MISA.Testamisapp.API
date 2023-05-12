@@ -92,7 +92,7 @@ namespace MISA.Testamis.BL
         /// </summary>
         /// <returns>File Excel chứa dữ liệu</returns>
         /// CreatedBy: Bien (05/04/2023)
-        public MemoryStream ExportToExcel(string? filter);
+        public MemoryStream ExportToExcel(string? filter, List<DataGrid> dataGrid);
 
         /// <summary>
         /// API xóa nhiều bản ghi

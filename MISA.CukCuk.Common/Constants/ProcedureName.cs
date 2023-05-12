@@ -53,5 +53,10 @@ namespace MISA.Testamis.Common.Constants
         /// </summary>
         public static string PROC_UPDATE_STATUS = "Proc_{0}_UpdateStatus";
 
+        /// <summary>
+        /// Template cho tên cột gắn dữ liệu khi xuất khẩu dữ liệu
+        /// </summary>
+        public static string WORKSHEETVALUE = "{0}{1}";
+
     }
 }

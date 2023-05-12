@@ -345,7 +345,7 @@ namespace MISA.Testamis.BL
         /// </summary>
         /// <returns>File Excel chứa dữ liệu</returns>
         /// CreatedBy: Bien (05/04/2023)
-        public virtual MemoryStream ExportToExcel(string? filter)
+        public virtual MemoryStream ExportToExcel(string? filter, List<DataGrid> dataGrid)
         {
             return new MemoryStream();
         }

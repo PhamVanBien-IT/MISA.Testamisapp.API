@@ -10,6 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MISA.Testamis.Common.Enums;
+using Newtonsoft.Json.Linq;
+using MISA.Testamis.Common.Constants;
+using System.IO;
 
 namespace MISA.Testamis.BL
 {
@@ -42,7 +45,7 @@ namespace MISA.Testamis.BL
 
             var validateFailures = new Dictionary<string, string>();
 
-            if(missionallowance.FromDate > missionallowance.ToDate)
+            if (missionallowance.FromDate > missionallowance.ToDate)
             {
                 validateFailures.Add("ToDate", Common.Resource.ErrorMsg_ToDate);
             }
@@ -54,14 +57,80 @@ namespace MISA.Testamis.BL
         /// </summary>
         /// <returns>File Excel chứa dữ liệu</returns>
         /// CreatedBy: Bien (05/04/2023)
-        public override MemoryStream ExportToExcel(string? filter)
+        public override MemoryStream ExportToExcel(string? filter, List<DataGrid> dataGrid)
         {
             ServiceResult serviceResult = new ServiceResult();
+
+            var listCaption = new string[dataGrid.Count];
+
+            var listDataField = new string[dataGrid.Count];
+
+            var listHeader = new int[dataGrid.Count];
+
+            var letters = new char[listHeader.Length];
+
+            var numberI = 0;
+
+            for (int i = 0; i < dataGrid.Count; i++)
+            {
+                if (dataGrid[i].Visible)
+                {
+                    numberI = numberI + 1;
+                    listHeader[i] = numberI;
+                    listCaption[i] = dataGrid[i].Caption;
+                    listDataField[i] = dataGrid[i].DataField;
+                }
+            }
+
+            for (int i = 0; i < listHeader.Length; i++)
+            {
+                if (listHeader[i] != 0)
+                {
+                    letters[i] = (char)(listHeader[i] + 64);
+                }
+                else
+                {
+                    letters[i] = letters[i];
+                }
+
+             ; // chuyển đổi giá trị số thành ký tự ASCII
+            }
+            var numberRow = string.Join(",", listHeader);
+
+            var number = numberRow.Replace(",0", "");
+
+            var listNumber = number.Split(',');
+
+            Array.Resize(ref listNumber, listNumber.Length - 1);
+
+            var listRow = string.Join(",", letters);
+
+            var list = listRow.Replace("\0,", "");
+
+            var listAlphabet = list.Split(',');
+
+            Array.Resize(ref listAlphabet, listAlphabet.Length - 1);
+
+            var captions = listCaption.Where(item => item != null).ToList();
+
+            var dataFields = listDataField.Where(item => item != null).ToList();
+
+            var nameExcel = new string[listAlphabet.Length];
+
+
+            for (int i = 0; i < listAlphabet.Length; i++)
+            {
+                nameExcel[i] = (string)(listAlphabet[i] + '3');
+
+            }
             // Gọi vào xuất dữ liệu trong BaseDL
-            var data = _missionallowanceDL.ExportToExcel(filter);
+            var data = _missionallowanceDL.ExportToExcel(filter, dataGrid);
 
             if (data.IsSuccess)
             {
+
+                //var lengthDataGrid = dataGrid["ValueKind"];
+
                 List<Missionallowance> missionallowances = new List<Missionallowance>();
 
                 missionallowances = (List<Missionallowance>)data.Data;
@@ -79,7 +148,7 @@ namespace MISA.Testamis.BL
                     worksheet.Cells["A1"].Value = "Danh sách đơn công tác";
 
                     // Hợp cột A1 -> J1 của dòng 1 trong sheet Danh_sach_don_cong_tac
-                    using (var r = worksheet.Cells["A1:Q1"])
+                    using (var r = worksheet.Cells[$"{listAlphabet[0]}1:{listAlphabet[listAlphabet.Length - 1]}1"])
                     {
                         r.Merge = true;
 
@@ -92,11 +161,11 @@ namespace MISA.Testamis.BL
                         r.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
                     }
 
-                    using (var r = worksheet.Cells["A2:Q2"])
+                    using (var r = worksheet.Cells[$"{listAlphabet[0]}2:{listAlphabet[listAlphabet.Length - 1]}2"])
                     {
                         r.Merge = true;
                     }
-                    using (var r = worksheet.Cells["A3:Q3"])
+                    using (var r = worksheet.Cells[$"{nameExcel[0]}:{nameExcel[nameExcel.Length - 1]}"])
                     {
                         // Định dạng kiểu chữ
                         r.Style.Font.Size = 12;
@@ -114,26 +183,12 @@ namespace MISA.Testamis.BL
                         r.Style.Border.Right.Style = ExcelBorderStyle.Thin;
                         r.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
                     }
+                    for (int i = 0; i < nameExcel.Length; i++)
+                    {
+                        worksheet.Cells[$"{nameExcel[i]}"].Value = captions[i];
+                    }
 
-                    worksheet.Cells["A3"].Value = "STT";
-                    worksheet.Cells["B3"].Value = "Mã nhân viên";
-                    worksheet.Cells["C3"].Value = "Người đề nghị";
-                    worksheet.Cells["D3"].Value = "Vị trí công việc";
-                    worksheet.Cells["E3"].Value = "Đơn vị công tác";
-                    worksheet.Cells["F3"].Value = "Ngày đề nghị";
-                    worksheet.Cells["G3"].Value = "Ngày đi";
-                    worksheet.Cells["H3"].Value = "Ngày về";
-                    worksheet.Cells["I3"].Value = "Số ngày đi công tác";
-                    worksheet.Cells["J3"].Value = "Địa điểm công tác";
-                    worksheet.Cells["K3"].Value = "Lý do công tác";
-                    worksheet.Cells["L3"].Value = "Yêu cầu hỗ trợ";
-                    worksheet.Cells["M3"].Value = "Người hỗ trợ";
-                    worksheet.Cells["N3"].Value = "Người duyệt";
-                    worksheet.Cells["O3"].Value = "Người liên quan";
-                    worksheet.Cells["P3"].Value = "Ghi chú";
-                    worksheet.Cells["Q3"].Value = "Trạng thái";
-
-                    worksheet.Column(1).Width = 6;
+                    worksheet.Column(1).Width = 30;
                     worksheet.Column(2).Width = 20;
                     worksheet.Column(3).Width = 25;
                     worksheet.Column(4).Width = 20;
@@ -155,8 +210,10 @@ namespace MISA.Testamis.BL
                     int STT = 1;
                     int start = 4;
                     int end = 4;
+
                     foreach (var entity in missionallowances)
                     {
+
                         worksheet.Cells[row, 1].Value = STT++;
                         worksheet.Cells[row, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                         worksheet.Cells[row, 2].Value = entity.EmployeeCode;
@@ -180,7 +237,7 @@ namespace MISA.Testamis.BL
                         worksheet.Cells[row, 17].Value = entity.StatusName;
 
                         // Tạo border 1 trường dữ liệu
-                        var recordRow = worksheet.Cells["A" + start++ + ":Q" + end++];
+                        var recordRow = worksheet.Cells[$"{listAlphabet[0]}" + start++ + $":{listAlphabet[listAlphabet.Length - 1]}" + end++];
 
                         recordRow.Style.Font.Size = 12;
                         recordRow.Style.Border.Top.Style = ExcelBorderStyle.Thin;
@@ -203,7 +260,7 @@ namespace MISA.Testamis.BL
             }
             return new MemoryStream();
         }
-
+      
         /// <summary>
         /// API Cập nhật trạng thái đơn công tác
         /// </summary>
