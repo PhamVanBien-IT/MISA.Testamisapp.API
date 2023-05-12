@@ -1,0 +1,318 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API.BL.Unitests\\MISA.Testamis.BL.Unitests.csproj": {}
+  },
+  "projects": {
+    "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API.BL.Unitests\\MISA.Testamis.BL.Unitests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API.BL.Unitests\\MISA.Testamis.BL.Unitests.csproj",
+        "projectName": "MISA.Testamis.BL.Unitests",
+        "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API.BL.Unitests\\MISA.Testamis.BL.Unitests.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.API.BL.Unitests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.BL\\MISA.Testamis.BL.csproj": {
+                "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.BL\\MISA.Testamis.BL.csproj"
+              },
+              "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj": {
+                "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.3.2, )"
+            },
+            "NSubstitute": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.BL\\MISA.Testamis.BL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.BL\\MISA.Testamis.BL.csproj",
+        "projectName": "MISA.Testamis.BL",
+        "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.BL\\MISA.Testamis.BL.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.BL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj": {
+                "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj"
+              },
+              "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\MISA.Testamis.DL.csproj": {
+                "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\MISA.Testamis.DL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[6.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj",
+        "projectName": "MISA.Testamis.Common",
+        "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[6.0.6, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\MISA.Testamis.DL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\MISA.Testamis.DL.csproj",
+        "projectName": "MISA.Testamis.DL",
+        "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\MISA.Testamis.DL.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj": {
+                "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

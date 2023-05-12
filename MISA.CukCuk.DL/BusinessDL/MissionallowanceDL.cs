@@ -86,7 +86,7 @@ namespace MISA.Testamis.DL
         /// CreatedBy: Bien (6/2/2023)
         public override int Insert(Missionallowance missionallowance)
         {
-            var numberOfAffectedRows = 0;
+            var numberInsertEmployeeMissionallowance = 0;
 
             // Khai tên class truyền vào
             var entityName = typeof(Missionallowance).Name;
@@ -99,19 +99,18 @@ namespace MISA.Testamis.DL
             {
                 connection.Open();
 
-                numberOfAffectedRows = connection.Execute(storedProdureName, missionallowance, commandType: CommandType.StoredProcedure);
+               var numberOfAffectedRows = connection.Execute(storedProdureName, missionallowance, commandType: CommandType.StoredProcedure);
 
 
                 if (numberOfAffectedRows > 0)
                 {
                     var missionallowanceId = GetMissionallowanceId();
-                    var numberInsertEmployeeMissionallowance = InsertEmployeeMissionallowance(missionallowance.EmployeeMissionallowances, missionallowanceId);
+                    numberInsertEmployeeMissionallowance = InsertEmployeeMissionallowance(missionallowance.EmployeeMissionallowances, missionallowanceId);
                 }
 
-                return numberOfAffectedRows;
+                return numberInsertEmployeeMissionallowance;
 
             }
-
 
         }
 

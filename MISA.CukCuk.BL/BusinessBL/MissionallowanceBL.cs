@@ -30,6 +30,25 @@ namespace MISA.Testamis.BL
 
         #region Method
         /// <summary>
+        /// Hàm kiểm tra những lỗi riêng
+        /// </summary>
+        /// <param name="entity">Đối tượng muốn kiểm tra dữ liệu</param>
+        /// <param name="isInsert">Kiểm tra thao tác thực hiện là thêm hay sửa</param>
+        /// <returns>Danh sách lỗi</returns>
+        /// CreatedBy: Bien (05/04/2023)
+        protected override Dictionary<string, string> ValidateCustom(Missionallowance? missionallowance, bool isInsert = true)
+        {
+
+            var validateFailures = new Dictionary<string, string>();
+
+            if(missionallowance.FromDate > missionallowance.ToDate)
+            {
+                validateFailures.Add("ToDate", Common.Resource.ErrorMsg_ToDate);
+            }
+
+            return validateFailures;
+        }
+        /// <summary>
         /// API xuất dữ liệu sang file Excel
         /// </summary>
         /// <returns>File Excel chứa dữ liệu</returns>
@@ -115,7 +134,7 @@ namespace MISA.Testamis.BL
                     worksheet.Column(1).Width = 6;
                     worksheet.Column(2).Width = 20;
                     worksheet.Column(3).Width = 25;
-                    worksheet.Column(4).Width = 12;
+                    worksheet.Column(4).Width = 20;
                     worksheet.Column(5).Width = 20;
                     worksheet.Column(6).Width = 30;
                     worksheet.Column(7).Width = 20;
@@ -296,7 +315,7 @@ namespace MISA.Testamis.BL
                     worksheet.Column(1).Width = 6;
                     worksheet.Column(2).Width = 20;
                     worksheet.Column(3).Width = 25;
-                    worksheet.Column(4).Width = 12;
+                    worksheet.Column(4).Width = 20;
                     worksheet.Column(5).Width = 20;
                     worksheet.Column(6).Width = 30;
                     worksheet.Column(7).Width = 20;

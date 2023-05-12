@@ -168,6 +168,9 @@
   <data name="ErrorMsg_InsertByDL" xml:space="preserve">
     <value>Lỗi thêm mới khi gọi vào DL</value>
   </data>
+  <data name="ErrorMsg_ToDate" xml:space="preserve">
+    <value>Ngày về nhỏ hơn ngày đi</value>
+  </data>
   <data name="ErrorMsg_UpdateByDL" xml:space="preserve">
     <value>Lỗi sửa khi gọi vào DL</value>
   </data>

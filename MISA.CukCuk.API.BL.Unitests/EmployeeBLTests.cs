@@ -32,7 +32,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra khi nhập sai id nhân viên
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (10/05/2023)
         [Test]
         public void GetById_ErrorEmployeeIdNotExist_ReturnsInvalid()
         {
@@ -60,7 +60,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra khi thực hiện thêm nhân viên thành công
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Insert_Employee_ReturnsValid()
         {
@@ -106,7 +106,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra thêm nhân viên khi mã nhân viên truyền vào là trống
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Insert_EmptyCode_ReturnsInvalid()
         {
@@ -158,7 +158,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra thực hiện hàm thêm nhân viên khi mã nhân viên truyền vào là trống
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Insert_EmptyFullName_ReturnsInvalid()
         {
@@ -209,7 +209,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra thực hiện hàm thêm nhân viên khi DepartmentID truyền vào là trống
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Insert_EmptyDepartmentId_ReturnsInvalid()
         {
@@ -257,7 +257,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra khi gọi vào DL thành công
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Insert_CallEmployeeDL_ReturnsValidCallDL()
         {
@@ -303,7 +303,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra khi gọi vào DL bị lỗi
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Insert_ErrorCallEmployeeDL_ReturnsInvalidCallDL()
         {
@@ -351,7 +351,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra khi thực hiện sửa nhân viên thành công
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Update_Employee_ReturnValid()
         {
@@ -397,7 +397,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra sửa nhân viên khi mã nhân viên truyền vào là trống
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Update_EmptyCode_ReturnsInvalid()
         {
@@ -447,7 +447,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra thực hiện hàm thêm nhân viên khi mã nhân viên truyền vào là trống
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Update_EmptyFullName_ReturnsInvalid()
         {
@@ -497,7 +497,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra thực hiện hàm sửa nhân viên khi DepartmentID truyền vào là trống
         /// </summary>
-        /// CreatedBy: Bien (12/2/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Update_EmptyDepartmentId_ReturnsInvalid()
         {
@@ -545,7 +545,7 @@ namespace MISA.Testamis.API.BL.Unitests
         /// <summary>
         /// Hàm kiểm tra tìm kiếm khi id nhân viên không tồn tại
         /// </summary>
-        /// CreatedBy: Bien ( 12/02/2023)
+        /// CreatedBy: Bien (09/05/2023)
         [Test]
         public void Delete_ErrorEmployeeIdNotExist_ReturnsInvalid()
         {
@@ -565,6 +565,10 @@ namespace MISA.Testamis.API.BL.Unitests
             Assert.AreEqual(expectedResult.IsSuccess, actualResult.IsSuccess);
         }
 
+        /// <summary>
+        /// Hàm kiểm tra mã nhân viên trùng mã nhân viên
+        /// </summary>
+        /// CreatedBy: Bien (10/05/2023)
         [Test]
         public void CheckEmployeeCode_AlreadyEmployeeCode_ReturnsInvalid()
         {

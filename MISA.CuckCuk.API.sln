@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISA.Testamis.Common", "MIS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{548C7319-1627-4363-B01C-F164A303B1E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISA.CukCuk.API.BL.Unitests", "MISA.CukCuk.API.BL.Unitests\MISA.CukCuk.API.BL.Unitests.csproj", "{E5871FF9-4784-474E-958A-1812C64F01E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISA.Testamis.BL.Unitests", "MISA.CukCuk.API.BL.Unitests\MISA.Testamis.BL.Unitests.csproj", "{E5871FF9-4784-474E-958A-1812C64F01E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -142,6 +142,15 @@ namespace MISA.Testamis.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ngày về nhỏ hơn ngày đi.
+        /// </summary>
+        public static string ErrorMsg_ToDate {
+            get {
+                return ResourceManager.GetString("ErrorMsg_ToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lỗi sửa khi gọi vào DL.
         /// </summary>
         public static string ErrorMsg_UpdateByDL {
