@@ -13,6 +13,7 @@ using MISA.Testamis.Common.Enums;
 using Newtonsoft.Json.Linq;
 using MISA.Testamis.Common.Constants;
 using System.IO;
+using System.Reflection;
 
 namespace MISA.Testamis.BL
 {
@@ -60,7 +61,6 @@ namespace MISA.Testamis.BL
         public override MemoryStream ExportToExcel(string? filter, List<DataGrid> dataGrid)
         {
             ServiceResult serviceResult = new ServiceResult();
-
             var listCaption = new string[dataGrid.Count];
 
             var listDataField = new string[dataGrid.Count];
@@ -188,14 +188,14 @@ namespace MISA.Testamis.BL
                         worksheet.Cells[$"{nameExcel[i]}"].Value = captions[i];
                     }
 
-                    worksheet.Column(1).Width = 30;
+                    worksheet.Column(1).Width = 20;
                     worksheet.Column(2).Width = 20;
                     worksheet.Column(3).Width = 25;
                     worksheet.Column(4).Width = 20;
                     worksheet.Column(5).Width = 20;
                     worksheet.Column(6).Width = 30;
                     worksheet.Column(7).Width = 20;
-                    worksheet.Column(8).Width = 40;
+                    worksheet.Column(8).Width = 20;
                     worksheet.Column(9).Width = 20;
                     worksheet.Column(10).Width = 20;
                     worksheet.Column(11).Width = 25;
@@ -213,29 +213,70 @@ namespace MISA.Testamis.BL
 
                     foreach (var entity in missionallowances)
                     {
+                        for(var i = 0; i< dataFields.Count; i++)
+                        {
+                            var field = dataFields[i];
+                            switch(field)
+                            {
+                                case "EmployeeCode":
+                                    worksheet.Cells[row, i + 1].Value = entity.EmployeeCode;
+                                    worksheet.Cells[row, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+                                    break;
+                                case "FullName":
+                                    worksheet.Cells[row, i + 1].Value = entity.FullName;
+                                    break;
+                                case "PositionName":
+                                    worksheet.Cells[row, i + 1].Value = entity.PositionName;
+                                    break;
+                                case "DepartmentName":
+                                    worksheet.Cells[row, i + 1].Value = entity.DepartmentName;
+                                    break;
+                                case "RequestDate":
+                                    worksheet.Cells[row, i + 1].Value = entity.RequestDate;
+                                    worksheet.Cells[row, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                                    worksheet.Cells[row, i + 1].Value = entity.RequestDate?.ToString("dd/MM/yyyy hh:mm");
 
-                        worksheet.Cells[row, 1].Value = STT++;
-                        worksheet.Cells[row, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                        worksheet.Cells[row, 2].Value = entity.EmployeeCode;
-                        worksheet.Cells[row, 3].Value = entity.FullName;
-                        worksheet.Cells[row, 4].Value = entity.PositionName;
-                        worksheet.Cells[row, 5].Value = entity.DepartmentName;
-                        worksheet.Cells[row, 6].Value = entity.RequestDate?.ToString("dd/MM/yyyy hh:mm");
-                        worksheet.Cells[row, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                        worksheet.Cells[row, 7].Value = entity.FromDate?.ToString("dd/MM/yyyy hh:mm");
-                        worksheet.Cells[row, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                        worksheet.Cells[row, 8].Value = entity.ToDate?.ToString("dd/MM/yyyy hh:mm");
-                        worksheet.Cells[row, 8].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                        worksheet.Cells[row, 9].Value = entity.LeaveDay;
-                        worksheet.Cells[row, 10].Value = entity.Location;
-                        worksheet.Cells[row, 11].Value = entity.Purpose;
-                        worksheet.Cells[row, 12].Value = entity.Request;
-                        worksheet.Cells[row, 13].Value = entity.SupportNames;
-                        worksheet.Cells[row, 14].Value = entity.ApprovalNames;
-                        worksheet.Cells[row, 15].Value = entity.RelationShipNames;
-                        worksheet.Cells[row, 16].Value = entity.Notes;
-                        worksheet.Cells[row, 17].Value = entity.StatusName;
-
+                                    break;
+                                case "FromDate":
+                                    worksheet.Cells[row, i + 1].Value = entity.FromDate;
+                                    worksheet.Cells[row, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                                    worksheet.Cells[row, i + 1].Value = entity.RequestDate?.ToString("dd/MM/yyyy hh:mm");
+                                    break;
+                                case "ToDate":
+                                    worksheet.Cells[row, i + 1].Value = entity.ToDate;
+                                    worksheet.Cells[row, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                                    worksheet.Cells[row, i + 1].Value = entity.RequestDate?.ToString("dd/MM/yyyy hh:mm");
+                                    break;
+                                case "LeaveDay":
+                                    worksheet.Cells[row, i + 1].Value = entity.LeaveDay;
+                                    break;
+                                case "Location":
+                                    worksheet.Cells[row, i + 1].Value = entity.Location;
+                                    break;
+                                case "Purpose":
+                                    worksheet.Cells[row, i + 1].Value = entity.Purpose;
+                                    break;
+                                case "Request":
+                                    worksheet.Cells[row, i + 1].Value = entity.Request;
+                                    break;
+                                case "SupportNames":
+                                    worksheet.Cells[row, i + 1].Value = entity.SupportNames;
+                                    break;
+                                case "ApprovalNames":
+                                    worksheet.Cells[row, i + 1].Value = entity.ApprovalNames;
+                                    break;
+                                case "RelationShipNames":
+                                    worksheet.Cells[row, i + 1].Value = entity.RelationShipNames;
+                                    break;
+                                case "Notes":
+                                    worksheet.Cells[row, i + 1].Value = entity.Notes;
+                                    break;
+                                case "StatusName":
+                                    worksheet.Cells[row, i + 1].Value = entity.StatusName;
+                                    break;
+                            }
+                        }
+                        
                         // Tạo border 1 trường dữ liệu
                         var recordRow = worksheet.Cells[$"{listAlphabet[0]}" + start++ + $":{listAlphabet[listAlphabet.Length - 1]}" + end++];
 
@@ -294,7 +335,7 @@ namespace MISA.Testamis.BL
         /// <param name="missionallowanceIds">Danh sách id đơn đã chọn</param>
         /// <returns>File Excel chứa dữ liệu</returns>
         /// CreatedBy: Bien (10/05/2023)
-        public MemoryStream ExportMissionnallowanceList(List<Guid> missionallowanceIds)
+        public MemoryStream ExportMissionnallowanceList(List<object> missionallowanceIds)
         {
             // Gọi vào xuất dữ liệu trong BaseDL
             var data = _missionallowanceDL.ExportMissionnallowanceList(missionallowanceIds);
@@ -305,6 +346,7 @@ namespace MISA.Testamis.BL
 
                 missionallowances = (List<Missionallowance>)data.Data;
 
+                var ids = missionallowanceIds[0];
 
                 var stream = new MemoryStream();
 

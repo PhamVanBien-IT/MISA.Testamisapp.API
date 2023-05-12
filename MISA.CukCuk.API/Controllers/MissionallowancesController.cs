@@ -110,7 +110,7 @@ namespace MISA.Testamis.API.Controllers
         /// <returns>File Excel chứa dữ liệu</returns>
         /// CreatedBy: Bien (10/05/2023)
         [HttpPost("ExportExcelSelected")]
-        public IActionResult ExportMissionnallowanceList(List<Guid> missionallowanceIds)
+        public IActionResult ExportMissionnallowanceList(List<object> missionallowanceIds)
         {
             try
             {

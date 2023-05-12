@@ -11,6 +11,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using static Dapper.SqlMapper;
 
 namespace MISA.Testamis.DL
@@ -99,13 +100,12 @@ namespace MISA.Testamis.DL
             {
                 connection.Open();
 
+                var numberOfAffectedRows = connection.Execute(storedProdureName, missionallowance, commandType: CommandType.StoredProcedure);
+
                 using (var transaction = connection.BeginTransaction())
                 {
                     try
                     {
-                        var numberOfAffectedRows = connection.Execute(storedProdureName, missionallowance, transaction, commandType: CommandType.StoredProcedure);
-
-
                         if (numberOfAffectedRows > 0)
                         {
                             var missionallowanceId = GetMissionallowanceId();
@@ -349,12 +349,12 @@ namespace MISA.Testamis.DL
         /// <param name="missionallowanceIds">Danh sách id đơn đã chọn</param>
         /// <returns>Danh sách đơn</returns>
         /// CreatedBy: Bien (10/05/2023)
-        public ServiceResult ExportMissionnallowanceList(List<Guid> missionallowanceIds)
+        public ServiceResult ExportMissionnallowanceList(List<object> missionallowanceIds)
         {
             // Khai tên class truyền vào
             var entityName = typeof(Missionallowance).Name;
 
-            var sizeList = missionallowanceIds.Count();
+            //var sizeList = missionallowanceIds.Count();
             // Khai báo tên stored procedure z
             string storedProcedureName = "Proc_Missionallowance_ExportListSelected";
 

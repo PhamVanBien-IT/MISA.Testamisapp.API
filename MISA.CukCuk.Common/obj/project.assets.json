@@ -1080,19 +1080,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
+    "C:\\Users\\DELL\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj",
+      "projectUniqueName": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj",
       "projectName": "MISA.Testamis.Common",
-      "projectPath": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj",
-      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\obj\\",
+      "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
