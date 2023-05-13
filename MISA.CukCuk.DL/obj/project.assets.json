@@ -5367,19 +5367,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
+    "C:\\Users\\DELL\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\MISA.Testamis.DL.csproj",
+      "projectUniqueName": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\MISA.Testamis.DL.csproj",
       "projectName": "MISA.Testamis.DL",
-      "projectPath": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\MISA.Testamis.DL.csproj",
-      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\obj\\",
+      "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\MISA.Testamis.DL.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.DL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5393,8 +5393,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj": {
-              "projectPath": "D:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj"
+            "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj": {
+              "projectPath": "C:\\MISA\\GĐ2\\MISA.Testamisapp.API\\MISA.CukCuk.Common\\MISA.Testamis.Common.csproj"
             }
           }
         }
